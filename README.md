@@ -7,7 +7,11 @@ An [iNSPIRE](https://inspirehep.net) CLI script using its [REST API](https://git
 
 Install the tool from the url https://github.com/ohannuks/inspire using pip:
 ```
-python -m pip install git+https://github.com/ohannuks/inspire
+pip install git+https://github.com/aykhuss/inspire
+```
+Or with uv:
+```
+uv tool install git+https://github.com/aykhuss/inspire
 ```
 
 ## Requirements
