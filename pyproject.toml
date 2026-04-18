@@ -1,0 +1,16 @@
+[project]
+name = "inspire"
+version = "1.0"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "beaupy",
+    "rich",
+]
+
+[project.scripts]
+inspire = "inspire.inspire:main"
+
+[build-system]
+requires = ["uv_build>=0.11.6,<0.12.0"]
+build-backend = "uv_build"

@@ -406,3 +406,42 @@ if __name__ == '__main__':
             except Exception as e:
                 console.print(str(e))
             spinner.stop()
+
+def main():
+    parser = argparse.ArgumentParser(description='Search and manage InspireHEP records.')
+    parser.add_argument('query', nargs='*', help='Search query terms')
+    parser.add_argument('--size', type=int, help='Number of records to retrieve')
+    # Add any other arguments you want to support
+    
+    args = parser.parse_args()
+    config = get_config()
+
+    # Use args.size if provided, otherwise use config
+    query_size = args.size or config.getint('query', 'size')
+    query_str = " ".join(args.query)
+
+    if not query_str:
+        print("Please provide a search query.")
+        return
+
+    console = Console()
+    with console.status("[bold green]Searching InspireHEP...") as status:
+        records, total = get_records(query_str, size=query_size)
+
+    if not records:
+        print("No records found.")
+        return
+
+    console.print(f"Found {total} records. Select to add to bibliography:")
+    selected = make_selection(
+        records, 
+        max_num_authors=config.getint('local', 'max_num_authors'),
+        page_size=config.getint('local', 'page_size')
+    )
+
+    # ... add your logic here to handle 'selected' records (bibtex/pdf) ...
+    for rec in selected:
+        console.print(f"Processing: {rec['metadata']['texkeys'][0]}")
+
+if __name__ == "__main__":
+    main()
