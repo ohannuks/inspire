@@ -3,6 +3,13 @@
 
 An [iNSPIRE](https://inspirehep.net) CLI script using its [REST API](https://github.com/inspirehep/rest-api-doc).
 
+## Installation
+
+Install the tool from the url https://github.com/ohannuks/inspire using pip:
+```
+python -m pip install git+https://github.com/ohannuks/inspire
+```
+
 ## Requirements
 This script requires `python 3.9` or above.
 The requirements can be installed via
@@ -10,7 +17,6 @@ The requirements can be installed via
 python -m pip install -r requirements.txt
 ```
 or manually inspect the `requirements.txt` file.
-
 
 ## Usage
 
